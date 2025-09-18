@@ -1,0 +1,15 @@
+<header>
+  <div class="logo">
+    <a href="{{ url_for('inicio') }}">
+      <img src="{{ url_for('static', filename='logo.png') }}" alt="AI Connect Logo">
+    </a>
+  </div>
+  <nav>
+    <a href="{{ url_for('inicio') }}">Inicio</a>
+    <a href="{{ url_for('quienes') }}">Quiénes Somos</a>
+    <a href="{{ url_for('productos') }}">Productos</a>
+    <a href="{{ url_for('referencias') }}">Referencias</a>
+    <a href="{{ url_for('contacto') }}">Contacto</a>
+    <a href="{{ url_for('carrito') }}" class="carrito">🛒 Carrito</a>
+  </nav>
+</header>

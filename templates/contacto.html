@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto - AI Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        .contacto {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .contacto h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            font-size: 2rem; /* mismo tamaño que productos y referencias */
+            color: #0d47a1; /* mismo azul profesional que otros títulos */
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .contacto-info {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .contacto-info p {
+            margin: 10px 0;
+        }
+
+        .contacto-info a {
+            color: #0d47a1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contacto-info a:hover {
+            text-decoration: underline;
+        }
+
+        iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            border: 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <section class="contacto">
+            <h2>Contáctanos</h2>
+
+            <div class="contacto-info">
+                <p><strong>📍 Ubicación:</strong> Cartago, Costa Rica</p>
+                <p><strong>📧 Correo:</strong> <a href="mailto:ac0nnec1@gmail.com">ac0nnec1@gmail.com</a></p>
+            </div>
+
+            <!-- Google Maps -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.1155228689923!2d-83.92297968521028!3d9.864449477442921!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3428e08a08b%3A0x4b8bcbfe3e5a2ef2!2sCartago%2C%20Costa%20Rica!5e0!3m2!1ses!2scr!4v1694535791234!5m2!1ses!2scr" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>

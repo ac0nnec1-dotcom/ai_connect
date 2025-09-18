@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrito - AI Connect</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .carrito {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+    }
+
+    .carrito h2 {
+      font-size: 42px;
+      font-weight: 600;
+      color: #0d47a1; /* mismo azul profesional */
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    #tabla-carrito {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    #tabla-carrito th, #tabla-carrito td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+
+    #tabla-carrito th {
+      background-color: #0d47a1;
+      color: white;
+    }
+
+    .carrito-footer {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center; /* centra los botones */
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .btn {
+      background-color: #0d47a1;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #08306b;
+      transform: scale(1.05);
+    }
+
+    #carrito-vacio p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  {% include 'header.html' %}
+
+  <main>
+    <section id="carrito" class="carrito">
+      <h2>Tu Carrito</h2>
+      <div id="carrito-vacio" style="display:none;">
+        <p>Tu carrito está vacío 🛒</p>
+        <a href="{{ url_for('productos') }}" class="btn">Ver Productos</a>
+      </div>
+
+      <div id="carrito-contenido">
+        <table id="tabla-carrito">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Total</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se cargan los productos dinámicamente -->
+          </tbody>
+        </table>
+        <div class="carrito-footer">
+          <h3>Total General: $<span id="total-general">0.00</span></h3>
+          <button id="vaciar-carrito" class="btn">Vaciar Carrito</button>
+          <button id="comprar-carrito" class="btn">Comprar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {% include 'footer.html' %}
+
+  <script>
+    function cargarCarrito() {
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      const tbody = document.querySelector("#tabla-carrito tbody");
+      const totalGeneral = document.getElementById("total-general");
+      const carritoVacio = document.getElementById("carrito-vacio");
+      const carritoContenido = document.getElementById("carrito-contenido");
+
+      tbody.innerHTML = "";
+      let total = 0;
+
+      if (carrito.length === 0) {
+        carritoVacio.style.display = "block";
+        carritoContenido.style.display = "none";
+        return;
+      } else {
+        carritoVacio.style.display = "none";
+        carritoContenido.style.display = "block";
+      }
+
+      carrito.forEach((producto, index) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${producto.nombre}</td>
+          <td>$${producto.precio.toFixed(2)}</td>
+          <td><input type="number" min="1" value="${producto.cantidad}" data-index="${index}" class="cantidad-input"></td>
+          <td>$${producto.total.toFixed(2)}</td>
+          <td><button class="btn eliminar" data-index="${index}">Eliminar</button></td>
+        `;
+        tbody.appendChild(tr);
+        total += producto.total;
+      });
+
+      totalGeneral.textContent = total.toFixed(2);
+
+      document.querySelectorAll(".eliminar").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const idx = e.target.dataset.index;
+          carrito.splice(idx, 1);
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+          cargarCarrito();
+        });
+      });
+
+      document.querySelectorAll(".cantidad-input").forEach(input => {
+        input.addEventListener("input", (e) => {
+          const idx = e.target.dataset.index;
+          let cantidad = parseInt(e.target.value);
+          if(cantidad < 1) cantidad = 1;
+          carrito[idx].cantidad = cantidad;
+          carrito[idx].total = carrito[idx].precio * cantidad;
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+          cargarCarrito();
+        });
+      });
+    }
+
+    // Vaciar carrito
+    document.getElementById("vaciar-carrito").addEventListener("click", () => {
+      localStorage.removeItem("carrito");
+      cargarCarrito();
+    });
+
+    // Comprar carrito
+    document.getElementById("comprar-carrito").addEventListener("click", () => {
+      let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío 🛒");
+        return;
+      }
+
+      let mensaje = "Hola, quiero realizar un pedido:\n\n";
+      carrito.forEach(producto => {
+        mensaje += `- ${producto.nombre} x${producto.cantidad} = $${producto.total.toFixed(2)}\n`;
+      });
+      mensaje += `\nTotal: $${document.getElementById("total-general").textContent}`;
+
+      let urlWhatsApp = `https://wa.me/50660021483?text=${encodeURIComponent(mensaje)}`;
+      window.open(urlWhatsApp, "_blank");
+    });
+
+    window.onload = cargarCarrito;
+  </script>
+</body>
+</html>

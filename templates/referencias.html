@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Referencias - AI Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        /* Fondo de la sección referencias */
+        body {
+            background: url('{{ url_for('static', filename='fondo-referencias.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav a {
+            color: #ffffff;
+        }
+
+        .referencias-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .referencias-section h2 {
+            font-size: 2rem; /* mismo tamaño que productos y quiénes somos */
+            color: #0d47a1; /* azul oscuro uniforme */
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            text-transform: capitalize;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .referencia-card {
+            background: linear-gradient(90deg, #D3D3D3, #D3D3D3); /* mismo color que header */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .referencia-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .referencia-card img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 25px;
+            border: 2px solid #fff;
+        }
+
+        .referencia-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            color: #0d47a1; /* título en azul oscuro */
+        }
+
+        .referencia-info p {
+            margin: 0;
+            font-size: 18px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        @media screen and (max-width: 768px) {
+            .referencia-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .referencia-card img {
+                margin-bottom: 20px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main class="referencias-section">
+        <h2>Referencias de Nuestros Clientes</h2>
+
+        <div class="referencia-card">
+            <img src="{{ url_for('static', filename='cliente1.jpg') }}" alt="Cliente 1">
+            <div class="referencia-info">
+                <h3>Gustica</h3>
+                <p>
+                    <strong>AI Connect</strong> creó nuestra página web, donde podemos mostrar nuestros productos, recibir pedidos y correos de nuestros clientes.  
+                    La web ha mejorado nuestra presencia en línea y facilita la interacción con nuestros clientes.
+                </p>
+            </div>
+        </div>
+
+        <div class="referencia-card">
+            <img src="{{ url_for('static', filename='cliente2.jpg') }}" alt="Cliente 2">
+            <div class="referencia-info">
+                <h3>Van Der Leer</h3>
+                <p>
+                    <strong>AI Connect</strong> desarrolló una aplicación para gestionar nuestra carga de trabajo usando porcentajes, lo que nos ha ayudado a optimizar nuestro tiempo y recursos. 
+                    La herramienta es muy intuitiva y nos ha permitido ser mucho más eficientes en nuestras tareas diarias.
+                </p>
+            </div>
+        </div>
+
+        <div class="referencia-card">
+            <img src="{{ url_for('static', filename='cliente3.jpg') }}" alt="Cliente 3">
+            <div class="referencia-info">
+                <h3>Corporación Grupo Samsa</h3>
+                <p>
+                    Gracias al sistema de atención virtual implementado por <strong>AI Connect</strong>, ahora podemos 
+                    responder consultas frecuentes automáticamente, lo que nos ahorra tiempo y mejora la experiencia del cliente.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>

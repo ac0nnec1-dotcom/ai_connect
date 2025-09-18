@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quiénes Somos - AI Connect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <style>
+        /* Sección Quiénes Somos */
+        .quienes-somos {
+            background: url('{{ url_for('static', filename='fondo-quienes.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            padding: 40px 20px 60px 20px; /* Menos espacio arriba para acercar al header */
+            text-align: center;
+            color: #333;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .quienes-somos h2 {
+            font-size: 2rem; /* mismo tamaño que Productos */
+            color: #0d47a1;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+        }
+
+        .quienes-somos h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .quienes-somos p.intro {
+            font-size: 1rem; /* mismo tamaño que Productos */
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+        }
+
+        /* GRID DE CUADRITOS 3X2 */
+        .grid-quienes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-items: center;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: #f4f4f9; /* mismo color que Productos */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card h4 {
+            color: #1976d2; /* mismo color que títulos de Productos */
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .card p, .card ul {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .card ul { padding-left: 20px; text-align: left; margin: 0; }
+        .card li { margin-bottom: 6px; }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* VIDEO */
+        .video-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .video-container video {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+
+        /* RESPONSIVE */
+        @media screen and (max-width: 992px) {
+            .grid-quienes { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media screen and (max-width: 768px) {
+            .grid-quienes { grid-template-columns: 1fr; }
+            .quienes-somos h2 { font-size: 1.7rem; }
+            .quienes-somos h3 { font-size: 1rem; }
+            .quienes-somos p.intro { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <section class="quienes-somos">
+            <h2>¿Quiénes Somos?</h2>
+            <h3>Conectando tu negocio con el futuro</h3>
+
+            <p class="intro">
+                En AI Connect creemos en el poder de la inteligencia artificial, la automatización y el desarrollo web para transformar la manera en que las empresas se comunican con sus clientes. Nuestro propósito es diseñar chatbots inteligentes, páginas web modernas y soluciones de automatización que potencien la experiencia del usuario y la productividad de tu negocio.
+            </p>
+
+            <!-- CUADRITOS 3X2 -->
+            <div class="grid-quienes">
+                <div class="card">
+                    <h4>Misión</h4>
+                    <p>Optimizar la comunicación y procesos de empresas mediante chatbots, páginas web y automatización.</p>
+                </div>
+                <div class="card">
+                    <h4>Visión</h4>
+                    <p>Ser líderes en soluciones digitales en Latinoamérica, conectando negocios con nuevas oportunidades.</p>
+                </div>
+                <div class="card">
+                    <h4>Valores</h4>
+                    <ul>
+                        <li>Innovación</li>
+                        <li>Confianza</li>
+                        <li>Excelencia</li>
+                        <li>Adaptabilidad</li>
+                        <li>Cercanía</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Historia</h4>
+                    <p>Nacimos para ayudar a las empresas a modernizarse, ofreciendo chatbots, páginas web y automatización.</p>
+                </div>
+                <div class="card">
+                    <h4>Propuesta de Valor</h4>
+                    <p>Integramos chatbots 24/7, páginas web modernas y automatización para mejorar productividad y experiencia.</p>
+                </div>
+                <div class="card">
+                    <h4>Diferenciador</h4>
+                    <p>Soluciones completas que combinan tecnología, automatización y experiencia del cliente en un solo lugar.</p>
+                </div>
+            </div>
+
+            <!-- VIDEO -->
+            <div class="video-container">
+                <video controls poster="{{ url_for('static', filename='portada.png') }}">
+                    <source src="{{ url_for('static', filename='ai-connect-video.mp4') }}" type="video/mp4">
+                    Tu navegador no soporta videos HTML5.
+                </video>
+            </div>
+        </section>
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>
