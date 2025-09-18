@@ -75,11 +75,12 @@ nav .carrito:hover {
 /* ------------------- */
 /* MAIN                */
 /* ------------------- */
- main {
+main {
   padding: 20px 20px 60px 20px; /* top, right, bottom, left */
   max-width: 1200px;
   margin: auto;
 }
+
 .referencias-section h2 {
   font-size: 2rem; /* mismo tamaño que productos y quiénes somos */
   color: #0d47a1; /* mismo azul oscuro */
@@ -88,6 +89,7 @@ nav .carrito:hover {
   text-align: center;
   margin-bottom: 30px; /* espacio uniforme debajo */
 }
+
 /* ------------------- */
 /* PRODUCTOS           */
 /* ------------------- */
@@ -218,7 +220,7 @@ nav .carrito:hover {
 /* FOOTER              */
 /* ------------------- */
 footer {
-  background-color: #1976d2; /* solo esto se agrega */
+  background-color: #1976d2;
 }
 
 .footer-logo img {
@@ -253,7 +255,6 @@ footer {
 .redes a {
   text-decoration: none;
 }
-
 
 /* ------------------- */
 /* MÉTODOS DE PAGO     */
@@ -322,7 +323,7 @@ footer {
   }
 
   .referencias-section h2 {
-   font-size: 1.6rem; /* más proporcional en pantallas pequeñas */
+   font-size: 1.6rem;
   }
 
   nav {
@@ -348,6 +349,7 @@ footer {
     max-width: 320px;
   }
 }
+
 /* ------------------- */
 /* CUADRITOS QUIÉNES SOMOS */
 /* ------------------- */
