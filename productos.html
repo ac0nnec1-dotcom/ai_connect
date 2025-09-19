@@ -10,15 +10,15 @@
         h2 {
             font-size: 2rem;
             color: #0d47a1;
-            text-transform: capitalize; /* Capitaliza cada palabra */
-            margin-bottom: 15px;        /* Espacio reducido debajo del título */
+            text-transform: capitalize; 
+            margin-bottom: 15px;        
             text-align: center;
         }
 
         /* Grid productos */
         .productos-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 20px;
             margin-top: 20px;
         }
@@ -98,6 +98,26 @@
             color: #666;
         }
 
+        /* Chatbot flotante */
+        #chatbot-logo {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            z-index: 10000;
+            cursor: move;
+            transition: transform 0.3s;
+        }
+        #chatbot-logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        #chatbot-logo:hover {
+            transform: scale(1.2);
+        }
+
         /* Responsive */
         @media(max-width: 1024px){
             .productos-grid {
@@ -171,6 +191,40 @@
     </div>
   </main>
 
+  <!-- Chatbot flotante AI Connect -->
+<div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; align-items: flex-end;">
+  
+  <!-- Logo flotante -->
+  <div id="chatbot-logo" style="width: 60px; height: 60px; cursor: pointer; border-radius: 50%; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.3); margin-bottom: 10px;">
+    <img src="static/chatbot_logo.png" alt="AI Connect Logo" style="width: 100%; height: 100%;">
+  </div>
+
+  <!-- Chatbox -->
+  <div id="chatbox" style="width: 400px; height: 600px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: none; flex-direction: column; overflow: hidden;">
+    
+    <!-- Header con X -->
+    <div style="display: flex; justify-content: space-between; align-items: center; background:#1976d2; padding: 10px;">
+      <img src="static/chatbot_logo.png" alt="AI Connect Logo" style="width: 100px; height: auto;">
+      <span id="chatbox-close" style="cursor:pointer; color:white; font-weight:bold; font-size:18px;">✖</span>
+    </div>
+    
+    <!-- Mensajes -->
+    <div id="chat-messages" style="flex:1; padding:12px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;"></div>
+    
+    <!-- Input -->
+    <div id="chat-input" style="display:flex; border-top:1px solid #ccc;">
+      <input type="text" id="user-input" placeholder="Escribe tu mensaje..." style="flex:1; padding:10px; border:none; outline:none; font-size:14px;">
+      <button id="send-btn" style="padding:10px 15px; background:#1976d2; color:white; border:none; cursor:pointer;">Enviar</button>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Incluye los archivos CSS y JS del chatbot -->
+<link rel="stylesheet" href="static/chatbot.css">
+<script src="static/chatbot.js"></script>
+
+
   {% include 'footer.html' %}
 
   <script>
@@ -228,6 +282,27 @@
         alert(`Agregaste ${cantidad} x ${nombre} al carrito. Total: $${total.toFixed(2)}`);
         modal.style.display = 'none';
     });
+
+    // Script para mover el chatbot
+    const chatbot = document.getElementById('chatbot-logo');
+    let isDragging = false, offsetX, offsetY;
+
+    chatbot.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      offsetX = e.clientX - chatbot.getBoundingClientRect().left;
+      offsetY = e.clientY - chatbot.getBoundingClientRect().top;
+    });
+
+    document.addEventListener('mousemove', function(e) {
+      if(isDragging){
+        chatbot.style.left = (e.clientX - offsetX) + 'px';
+        chatbot.style.top = (e.clientY - offsetY) + 'px';
+        chatbot.style.bottom = 'auto';
+        chatbot.style.right = 'auto';
+      }
+    });
+
+    document.addEventListener('mouseup', () => { isDragging = false; });
   </script>
 </body>
 </html>
