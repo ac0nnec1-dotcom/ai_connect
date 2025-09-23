@@ -99,6 +99,68 @@
       line-height: 1.4;
     }
 
+    /* Portafolio */
+    .portfolio {
+      max-width: 1200px;
+      margin: auto;
+      padding: 50px 20px;
+    }
+    .portfolio h2 {
+      text-align: center;
+      color: #0d47a1;
+      margin-bottom: 40px;
+    }
+    .category {
+      margin-bottom: 50px;
+    }
+    .category h3 {
+      color: #1976d2;
+      margin-bottom: 20px;
+    }
+    .portfolio-item {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+    .portfolio-item.reverse {
+      flex-direction: row-reverse;
+    }
+    .portfolio-img {
+      flex: 1;
+    }
+    .portfolio-img img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .portfolio-text {
+      flex: 1;
+    }
+    .portfolio-text h4 {
+      color: #1976d2;
+      margin-bottom: 8px;
+    }
+    .portfolio-text p {
+      color: #444;
+      line-height: 1.6;
+    }
+    .ver-mas {
+      background: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .extra {
+      display: none;
+      margin-top: 20px;
+    }
+
     /* Chatbot flotante */
     #chatbot-logo {
       position: fixed;
@@ -120,21 +182,14 @@
     }
 
     /* Responsive */
-    @media(max-width: 1024px) {
-      .beneficios-grid,
-      .payment-methods {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
     @media(max-width: 768px) {
-      .beneficios h2,
-      .payment-section h2 { font-size: 1.7rem; }
-      .beneficios p.intro,
-      .payment-section p { font-size: 1rem; }
-      .beneficios-grid,
-      .payment-methods { grid-template-columns: 1fr; }
-      .payment-card { width: 100%; max-width: 320px; }
+      .portfolio-item,
+      .portfolio-item.reverse {
+        flex-direction: column;
+      }
+      .portfolio-img img {
+        height: 180px;
+      }
     }
   </style>
 </head>
@@ -142,387 +197,131 @@
 
   {% include 'header.html' %}
 
- <!-- Portafolio de Trabajos -->
-<section style="padding:50px 20px; max-width:1200px; margin:auto;">
-  <h2 style="color:#0d47a1; text-align:center; margin-bottom:40px;">Nuestros Trabajos</h2>
+  <!-- Portafolio con Ver más -->
+  <section class="portfolio">
+    <h2>Nuestros Trabajos</h2>
 
-  <div class="portfolio">
-
-    <!-- 1 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen1.JPG') }}" alt="Portada página web">
+    <!-- Categoría Web -->
+    <div class="category">
+      <h3>Páginas Web</h3>
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="{{ url_for('static', filename='imagen1.JPG') }}" alt="Portada página web">
+        </div>
+        <div class="portfolio-text">
+          <h4>Portada Página Web</h4>
+          <p>Diseño inicial y estructura principal de la web.</p>
+        </div>
       </div>
-      <div class="portfolio-text">
-        <h3>Portada Página Web</h3>
-        <p>Diseño inicial y estructura principal de la web.</p>
+      <div class="extra" id="extra-web">
+        <!-- resto imágenes web -->
+        <div class="portfolio-item reverse">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen2.JPG') }}" alt="Quiénes Somos"></div>
+          <div class="portfolio-text"><h4>Quiénes Somos</h4><p>Sección con historia y valores.</p></div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen3.JPG') }}" alt="Productos"></div>
+          <div class="portfolio-text"><h4>Productos</h4><p>Catálogo de productos ofrecidos.</p></div>
+        </div>
+        <div class="portfolio-item reverse">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen4.JPG') }}" alt="Referencias"></div>
+          <div class="portfolio-text"><h4>Referencias</h4><p>Clientes y proyectos destacados.</p></div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen5.JPG') }}" alt="Carrito"></div>
+          <div class="portfolio-text"><h4>Carrito</h4><p>Vista del carrito de compras.</p></div>
+        </div>
       </div>
+      <button class="ver-mas" onclick="toggleExtra('extra-web', this)">Ver más</button>
     </div>
 
-    <!-- 2 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen2.JPG') }}" alt="Quiénes Somos">
+    <!-- Categoría Chatbot -->
+    <div class="category">
+      <h3>Chatbot</h3>
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="{{ url_for('static', filename='imagen6.JPG') }}" alt="Chatbot inicio">
+        </div>
+        <div class="portfolio-text">
+          <h4>Chatbot - Inicio</h4>
+          <p>Interfaz inicial del chatbot.</p>
+        </div>
       </div>
-      <div class="portfolio-text">
-        <h3>Quiénes Somos</h3>
-        <p>Sección que presenta la historia y valores de la empresa.</p>
+      <div class="extra" id="extra-chatbot">
+        <div class="portfolio-item reverse">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen7.JPG') }}" alt="Ingreso nombre"></div>
+          <div class="portfolio-text"><h4>Ingreso de Nombre</h4><p>El chatbot solicita datos básicos.</p></div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen8.JPG') }}" alt="Muestra productos"></div>
+          <div class="portfolio-text"><h4>Productos en Chatbot</h4><p>Interactividad con catálogo.</p></div>
+        </div>
+        <div class="portfolio-item reverse">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen9.JPG') }}" alt="Asesor"></div>
+          <div class="portfolio-text"><h4>Asesor Virtual</h4><p>Conexión con un asesor humano.</p></div>
+        </div>
       </div>
+      <button class="ver-mas" onclick="toggleExtra('extra-chatbot', this)">Ver más</button>
     </div>
 
-    <!-- 3 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen3.JPG') }}" alt="Productos">
+    <!-- Categoría Automatización -->
+    <div class="category">
+      <h3>Automatización</h3>
+      <div class="portfolio-item">
+        <div class="portfolio-img">
+          <img src="{{ url_for('static', filename='imagen10.JPG') }}" alt="Automatización manuales">
+        </div>
+        <div class="portfolio-text">
+          <h4>Automatización - Manuales</h4>
+          <p>Procesos con documentación clara.</p>
+        </div>
       </div>
-      <div class="portfolio-text">
-        <h3>Productos</h3>
-        <p>Visualización del catálogo de productos ofrecidos.</p>
+      <div class="extra" id="extra-automatizacion">
+        <div class="portfolio-item reverse">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen11.JPG') }}" alt="Ingreso página"></div>
+          <div class="portfolio-text"><h4>Ingreso Página</h4><p>Inicio de sesión.</p></div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen12.JPG') }}" alt="Menú carga"></div>
+          <div class="portfolio-text"><h4>Menú de Carga</h4><p>Gestión de tareas.</p></div>
+        </div>
+        <div class="portfolio-item reverse">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen13.JPG') }}" alt="App trabajo"></div>
+          <div class="portfolio-text"><h4>Aplicación de Trabajo</h4><p>Vista en funcionamiento.</p></div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen14.JPG') }}" alt="Manual administrador"></div>
+          <div class="portfolio-text"><h4>Manual Administrador</h4><p>Guía para administradores.</p></div>
+        </div>
+        <div class="portfolio-item reverse">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen15.JPG') }}" alt="Manual usuario"></div>
+          <div class="portfolio-text"><h4>Manual Usuario</h4><p>Guía para usuarios finales.</p></div>
+        </div>
+        <div class="portfolio-item">
+          <div class="portfolio-img"><img src="{{ url_for('static', filename='imagen16.JPG') }}" alt="Superadministrador"></div>
+          <div class="portfolio-text"><h4>Superadministrador</h4><p>Gestión total del sistema.</p></div>
+        </div>
       </div>
-    </div>
-
-    <!-- 4 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen4.JPG') }}" alt="Referencias">
-      </div>
-      <div class="portfolio-text">
-        <h3>Referencias</h3>
-        <p>Proyectos y clientes que respaldan nuestro trabajo.</p>
-      </div>
-    </div>
-
-    <!-- 5 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen5.JPG') }}" alt="Carrito">
-      </div>
-      <div class="portfolio-text">
-        <h3>Carrito</h3>
-        <p>Vista del carrito de compras en la tienda en línea.</p>
-      </div>
-    </div>
-
-    <!-- 6 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen6.JPG') }}" alt="Chatbot inicio">
-      </div>
-      <div class="portfolio-text">
-        <h3>Chatbot - Inicio</h3>
-        <p>Interfaz inicial del chatbot para atención al cliente.</p>
-      </div>
-    </div>
-
-    <!-- 7 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen7.JPG') }}" alt="Chatbot ingreso nombre">
-      </div>
-      <div class="portfolio-text">
-        <h3>Ingreso de Nombre</h3>
-        <p>El chatbot solicita datos básicos al usuario para personalizar la atención.</p>
-      </div>
-    </div>
-
-    <!-- 8 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen8.JPG') }}" alt="Chatbot muestra productos">
-      </div>
-      <div class="portfolio-text">
-        <h3>Productos en Chatbot</h3>
-        <p>El chatbot muestra los productos disponibles de manera interactiva.</p>
-      </div>
-    </div>
-
-    <!-- 9 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen9.JPG') }}" alt="Chatbot asesor">
-      </div>
-      <div class="portfolio-text">
-        <h3>Asesor Virtual</h3>
-        <p>El chatbot conecta al cliente con un asesor humano en caso necesario.</p>
-      </div>
-    </div>
-
-    <!-- 10 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen10.JPG') }}" alt="Automatización manuales">
-      </div>
-      <div class="portfolio-text">
-        <h3>Automatización - Manuales</h3>
-        <p>Automatización de procesos con documentación clara.</p>
-      </div>
-    </div>
-
-    <!-- 11 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen11.JPG') }}" alt="Ingreso página">
-      </div>
-      <div class="portfolio-text">
-        <h3>Ingreso a la Página</h3>
-        <p>Pantalla de inicio de sesión en la aplicación.</p>
-      </div>
-    </div>
-
-    <!-- 12 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen12.JPG') }}" alt="Aplicación menú carga">
-      </div>
-      <div class="portfolio-text">
-        <h3>Menú de Carga de Trabajo</h3>
-        <p>Gestión de tareas dentro de la aplicación de carga de trabajo.</p>
-      </div>
-    </div>
-
-    <!-- 13 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen13.JPG') }}" alt="Aplicación carga trabajo">
-      </div>
-      <div class="portfolio-text">
-        <h3>Aplicación de Trabajo</h3>
-        <p>Vista detallada de la aplicación en funcionamiento.</p>
-      </div>
-    </div>
-
-    <!-- 14 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen14.JPG') }}" alt="Manual administrador">
-      </div>
-      <div class="portfolio-text">
-        <h3>Manual de Administrador</h3>
-        <p>Guía de uso para los administradores del sistema.</p>
-      </div>
-    </div>
-
-    <!-- 15 -->
-    <div class="portfolio-item">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen15.JPG') }}" alt="Manual usuario">
-      </div>
-      <div class="portfolio-text">
-        <h3>Manual de Usuario</h3>
-        <p>Guía sencilla para el usuario final de la aplicación.</p>
-      </div>
-    </div>
-
-    <!-- 16 -->
-    <div class="portfolio-item reverse">
-      <div class="portfolio-img">
-        <img src="{{ url_for('static', filename='imagen16.JPG') }}" alt="Superadministrador">
-      </div>
-      <div class="portfolio-text">
-        <h3>Superadministrador</h3>
-        <p>Vista avanzada para la gestión total del sistema.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<style>
-  .portfolio {
-    display: flex;
-    flex-direction: column;
-    gap: 50px;
-  }
-
-  .portfolio-item {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-  }
-
-  .portfolio-item.reverse {
-    flex-direction: row-reverse;
-  }
-
-  .portfolio-img {
-    flex: 1;
-  }
-
-  .portfolio-img img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-
-  .portfolio-text {
-    flex: 1;
-  }
-
-  .portfolio-text h3 {
-    color: #1976d2;
-    margin-bottom: 10px;
-  }
-
-  .portfolio-text p {
-    color: #444;
-    line-height: 1.6;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    .portfolio-item,
-    .portfolio-item.reverse {
-      flex-direction: column;
-    }
-    .portfolio-img img {
-      height: 200px;
-    }
-  }
-</style>
-
-
-
-  <!-- Beneficios -->
-  <section class="beneficios">
-    <h2>Automatización Eficiente, Personalización Sin Límites</h2>
-    <p class="intro">Nuestro Chatbot ofrece respuestas instantáneas 24/7 gracias a IA avanzada, atendiendo en todos los puntos de contacto del recorrido del cliente.</p>
-    <div class="beneficios-grid">
-      <div class="beneficio-card">
-        <h3>Optimización Del Flujo</h3>
-        <p>Tu equipo se enfoca en casos complejos mientras el chatbot maneja solicitudes comunes, mejorando la eficiencia y reduciendo tiempos de espera.</p>
-      </div>
-      <div class="beneficio-card">
-        <h3>Consultas Ilimitadas</h3>
-        <p>Capacidad para atender miles de usuarios simultáneamente, en cualquier idioma.</p>
-      </div>
-      <div class="beneficio-card">
-        <h3>Escalamiento Inteligente</h3>
-        <p>Derivación automática a un operador humano para casos más complejos.</p>
-      </div>
-      <div class="beneficio-card">
-        <h3>Personalización</h3>
-        <p>Bots configurables y entrenados con tus fuentes de datos para respuestas precisas.</p>
-      </div>
-      <div class="beneficio-card">
-        <h3>Integración Multicanal</h3>
-        <p>Conecta tu chatbot con WhatsApp, Facebook, sitios web y más, garantizando una experiencia unificada en todos los canales.</p>
-      </div>
-      <div class="beneficio-card">
-        <h3>Alta Disponibilidad</h3>
-        <p>Respuestas inmediatas las 24 horas, los 7 días de la semana, asegurando atención continua sin importar la hora o el lugar.</p>
-      </div>
+      <button class="ver-mas" onclick="toggleExtra('extra-automatizacion', this)">Ver más</button>
     </div>
   </section>
 
-  <!-- Métodos de Pago -->
-  <section class="payment-section">
-    <h2>Formas De Pago</h2>
-    <p>En Costa Rica y a nivel internacional contamos con diferentes opciones seguras de pago:</p>
-    <div class="payment-methods">
-      <div class="payment-card">
-        <img src="{{ url_for('static', filename='transferencia.png') }}" alt="Transferencia Bancaria">
-        <h3>Transferencia Bancaria</h3>
-        <p>Podés realizar tu pago mediante transferencia directa a nuestras cuentas bancarias locales.</p>
-      </div>
-      <div class="payment-card">
-        <img src="{{ url_for('static', filename='sinpe.png') }}" alt="SINPE Móvil">
-        <h3>SINPE Móvil</h3>
-        <p>Recibimos pagos rápidos y seguros a través de SINPE Móvil en Costa Rica.</p>
-      </div>
-      <div class="payment-card">
-        <img src="{{ url_for('static', filename='paypal.png') }}" alt="PayPal">
-        <h3>PayPal</h3>
-        <p>Para clientes internacionales ofrecemos pagos fáciles y seguros con PayPal.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chatbot flotante AI Connect -->
-  <div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; align-items: flex-end;">
-    
-    <!-- Logo flotante -->
-    <div id="chatbot-logo" style="width: 60px; height: 60px; cursor: pointer; border-radius: 50%; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.3); margin-bottom: 10px;">
-      <img src="static/chatbot_logo.png" alt="AI Connect Logo" style="width: 100%; height: 100%;">
-    </div>
-
-    <!-- Chatbox -->
-    <div id="chatbox" style="width: 400px; height: 600px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: none; flex-direction: column; overflow: hidden;">
-      
-      <!-- Header con X -->
-      <div style="display: flex; justify-content: space-between; align-items: center; background:#1976d2; padding: 10px;">
-        <img src="static/chatbot_logo.png" alt="AI Connect Logo" style="width: 100px; height: auto;">
-        <span id="chatbox-close" style="cursor:pointer; color:white; font-weight:bold; font-size:18px;">✖</span>
-      </div>
-      
-      <!-- Mensajes -->
-      <div id="chat-messages" style="flex:1; padding:12px; overflow-y:auto; display:flex; flex-direction:column; gap:8px;"></div>
-      
-      <!-- Input -->
-      <div id="chat-input" style="display:flex; border-top:1px solid #ccc;">
-        <input type="text" id="user-input" placeholder="Escribe tu mensaje..." style="flex:1; padding:10px; border:none; outline:none; font-size:14px;">
-        <button id="send-btn" style="padding:10px 15px; background:#1976d2; color:white; border:none; cursor:pointer;">Enviar</button>
-      </div>
-      
-    </div>
-  </div>
-
-  <!-- Incluye los archivos CSS y JS del chatbot -->
-  <link rel="stylesheet" href="static/chatbot.css">
-  <script src="static/chatbot.js"></script>
-
-  <!-- Script del Carrusel -->
+  <!-- Script para Ver más -->
   <script>
-    const track = document.querySelector('.carousel-track');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    let index = 0;
-    const totalSlides = document.querySelectorAll('.carousel-track > div').length;
-
-    function showSlide(i) {
-      index = (i + totalSlides) % totalSlides; 
-      track.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    nextBtn.addEventListener('click', () => showSlide(index + 1));
-    prevBtn.addEventListener('click', () => showSlide(index - 1));
-
-    // auto-rotación cada 6 segundos
-    setInterval(() => {
-      showSlide(index + 1);
-    }, 6000);
-  </script>
-
-  <!-- Script para mover el chatbot -->
-  <script>
-    const chatbot = document.getElementById('chatbot-logo');
-
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    chatbot.addEventListener('mousedown', function(e) {
-      isDragging = true;
-      offsetX = e.clientX - chatbot.getBoundingClientRect().left;
-      offsetY = e.clientY - chatbot.getBoundingClientRect().top;
-    });
-
-    document.addEventListener('mousemove', function(e) {
-      if (isDragging) {
-        chatbot.style.left = e.clientX - offsetX + 'px';
-        chatbot.style.top = e.clientY - offsetY + 'px';
-        chatbot.style.bottom = 'auto';
-        chatbot.style.right = 'auto';
+    function toggleExtra(id, btn) {
+      const extra = document.getElementById(id);
+      if (extra.style.display === "block") {
+        extra.style.display = "none";
+        btn.textContent = "Ver más";
+      } else {
+        extra.style.display = "block";
+        btn.textContent = "Ver menos";
       }
-    });
-
-    document.addEventListener('mouseup', function() {
-      isDragging = false;
-    });
+    }
   </script>
 
+  <!-- Aquí siguen tus secciones de beneficios, pagos y chatbot -->
   {% include 'footer.html' %}
 
 </body>
 </html>
-
