@@ -222,30 +222,7 @@
 
   {% include 'header.html' %}
 
-  <!-- Productos -->
-  <main>
-    <section class="productos">
-      <h2>Nuestros Productos</h2>
-      <div class="productos-grid">
-        <div class="producto-card" data-video="{{ url_for('static', filename='video_chatbot.mp4') }}">
-          <img src="{{ url_for('static', filename='chatbot.jpg') }}" alt="Chatbot">
-          <h3>Chatbot Inteligente</h3>
-          <p>$125.9</p>
-        </div>
-        <div class="producto-card" data-video="{{ url_for('static', filename='video_web.mp4') }}">
-          <img src="{{ url_for('static', filename='webdesign.jpg') }}" alt="Web">
-          <h3>Página Web</h3>
-          <p>$199.9</p>
-        </div>
-        <div class="producto-card" data-video="{{ url_for('static', filename='video_automatizacion.mp4') }}">
-          <img src="{{ url_for('static', filename='automation.jpg') }}" alt="Automatización">
-          <h3>Automatización Empresarial</h3>
-          <p>$259.9</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
+  
   <!-- Modal de Video -->
   <div id="videoModal" class="video-modal">
     <div class="video-modal-content">
@@ -407,3 +384,4 @@
 
 </body>
 </html>
+
