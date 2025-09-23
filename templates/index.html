@@ -142,161 +142,246 @@
 
   {% include 'header.html' %}
 
-  <!-- Portafolio de Trabajos -->
+ <!-- Portafolio de Trabajos -->
 <section style="padding:50px 20px; max-width:1200px; margin:auto;">
-  <h2 style="color:#0d47a1; text-align:center; margin-bottom:30px;">Nuestros Trabajos</h2>
+  <h2 style="color:#0d47a1; text-align:center; margin-bottom:40px;">Nuestros Trabajos</h2>
 
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:25px;">
+  <div class="portfolio">
 
-    <!-- Página Web -->
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen1.JPG') }}" alt="Portada página web"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Portada Página Web</h3>
+    <!-- 1 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen1.JPG') }}" alt="Portada página web">
+      </div>
+      <div class="portfolio-text">
+        <h3>Portada Página Web</h3>
         <p>Diseño inicial y estructura principal de la web.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen2.JPG') }}" alt="Quiénes Somos"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Quiénes Somos</h3>
+    <!-- 2 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen2.JPG') }}" alt="Quiénes Somos">
+      </div>
+      <div class="portfolio-text">
+        <h3>Quiénes Somos</h3>
         <p>Sección que presenta la historia y valores de la empresa.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen3.JPG') }}" alt="Productos"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Productos</h3>
+    <!-- 3 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen3.JPG') }}" alt="Productos">
+      </div>
+      <div class="portfolio-text">
+        <h3>Productos</h3>
         <p>Visualización del catálogo de productos ofrecidos.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen4.JPG') }}" alt="Referencias"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Referencias</h3>
+    <!-- 4 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen4.JPG') }}" alt="Referencias">
+      </div>
+      <div class="portfolio-text">
+        <h3>Referencias</h3>
         <p>Proyectos y clientes que respaldan nuestro trabajo.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen5.JPG') }}" alt="Carrito"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Carrito</h3>
+    <!-- 5 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen5.JPG') }}" alt="Carrito">
+      </div>
+      <div class="portfolio-text">
+        <h3>Carrito</h3>
         <p>Vista del carrito de compras en la tienda en línea.</p>
       </div>
     </div>
 
-    <!-- Chatbot -->
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen6.JPG') }}" alt="Inicio chatbot"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Chatbot Inicio</h3>
-        <p>Pantalla inicial de interacción con el chatbot.</p>
+    <!-- 6 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen6.JPG') }}" alt="Chatbot inicio">
+      </div>
+      <div class="portfolio-text">
+        <h3>Chatbot - Inicio</h3>
+        <p>Interfaz inicial del chatbot para atención al cliente.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen7.JPG') }}" alt="Ingreso nombre chatbot"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Ingreso de Nombre</h3>
-        <p>El chatbot solicita al usuario su identificación inicial.</p>
+    <!-- 7 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen7.JPG') }}" alt="Chatbot ingreso nombre">
+      </div>
+      <div class="portfolio-text">
+        <h3>Ingreso de Nombre</h3>
+        <p>El chatbot solicita datos básicos al usuario para personalizar la atención.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen8.JPG') }}" alt="Productos chatbot"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Productos en Chatbot</h3>
-        <p>El chatbot muestra el catálogo de productos disponible.</p>
+    <!-- 8 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen8.JPG') }}" alt="Chatbot muestra productos">
+      </div>
+      <div class="portfolio-text">
+        <h3>Productos en Chatbot</h3>
+        <p>El chatbot muestra los productos disponibles de manera interactiva.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen9.JPG') }}" alt="Contacto chatbot"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Contacto con Asesor</h3>
-        <p>El chatbot ofrece la opción de hablar con un asesor humano.</p>
+    <!-- 9 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen9.JPG') }}" alt="Chatbot asesor">
+      </div>
+      <div class="portfolio-text">
+        <h3>Asesor Virtual</h3>
+        <p>El chatbot conecta al cliente con un asesor humano en caso necesario.</p>
       </div>
     </div>
 
-    <!-- Automatización -->
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen10.JPG') }}" alt="Manuales"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Manuales</h3>
-        <p>Documentación y guías de uso de la aplicación.</p>
+    <!-- 10 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen10.JPG') }}" alt="Automatización manuales">
+      </div>
+      <div class="portfolio-text">
+        <h3>Automatización - Manuales</h3>
+        <p>Automatización de procesos con documentación clara.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen11.JPG') }}" alt="Ingreso página"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Ingreso Página</h3>
+    <!-- 11 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen11.JPG') }}" alt="Ingreso página">
+      </div>
+      <div class="portfolio-text">
+        <h3>Ingreso a la Página</h3>
         <p>Pantalla de inicio de sesión en la aplicación.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen12.JPG') }}" alt="Carga de trabajo"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Carga de Trabajo</h3>
-        <p>Vista del menú de la aplicación de gestión de tareas.</p>
+    <!-- 12 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen12.JPG') }}" alt="Aplicación menú carga">
+      </div>
+      <div class="portfolio-text">
+        <h3>Menú de Carga de Trabajo</h3>
+        <p>Gestión de tareas dentro de la aplicación de carga de trabajo.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen13.JPG') }}" alt="Aplicación menú"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Aplicación Menú</h3>
-        <p>Opciones de la aplicación de carga de trabajo.</p>
+    <!-- 13 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen13.JPG') }}" alt="Aplicación carga trabajo">
+      </div>
+      <div class="portfolio-text">
+        <h3>Aplicación de Trabajo</h3>
+        <p>Vista detallada de la aplicación en funcionamiento.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen14.JPG') }}" alt="Manual administrador"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Manual Administrador</h3>
-        <p>Guía para la gestión avanzada por parte del administrador.</p>
+    <!-- 14 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen14.JPG') }}" alt="Manual administrador">
+      </div>
+      <div class="portfolio-text">
+        <h3>Manual de Administrador</h3>
+        <p>Guía de uso para los administradores del sistema.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen15.JPG') }}" alt="Manual usuario"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Manual Usuario</h3>
-        <p>Guía de referencia para el usuario final.</p>
+    <!-- 15 -->
+    <div class="portfolio-item">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen15.JPG') }}" alt="Manual usuario">
+      </div>
+      <div class="portfolio-text">
+        <h3>Manual de Usuario</h3>
+        <p>Guía sencilla para el usuario final de la aplicación.</p>
       </div>
     </div>
 
-    <div style="background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-      <img src="{{ url_for('static', filename='imagen16.JPG') }}" alt="Superadministrador"
-           style="width:100%; height:200px; object-fit:cover;">
-      <div style="padding:15px;">
-        <h3 style="color:#1976d2;">Superadministrador</h3>
-        <p>Vista del panel principal del superadministrador.</p>
+    <!-- 16 -->
+    <div class="portfolio-item reverse">
+      <div class="portfolio-img">
+        <img src="{{ url_for('static', filename='imagen16.JPG') }}" alt="Superadministrador">
+      </div>
+      <div class="portfolio-text">
+        <h3>Superadministrador</h3>
+        <p>Vista avanzada para la gestión total del sistema.</p>
       </div>
     </div>
 
   </div>
 </section>
+
+<style>
+  .portfolio {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .portfolio-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .portfolio-item.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .portfolio-img {
+    flex: 1;
+  }
+
+  .portfolio-img img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .portfolio-text {
+    flex: 1;
+  }
+
+  .portfolio-text h3 {
+    color: #1976d2;
+    margin-bottom: 10px;
+  }
+
+  .portfolio-text p {
+    color: #444;
+    line-height: 1.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .portfolio-item,
+    .portfolio-item.reverse {
+      flex-direction: column;
+    }
+    .portfolio-img img {
+      height: 200px;
+    }
+  }
+</style>
+
 
 
   <!-- Beneficios -->
