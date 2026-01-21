@@ -345,7 +345,33 @@
   
   {% include 'footer.html' %}
 
+  <script>
+const chatbot = document.getElementById('chatbot-logo');
+let isDragging = false, offsetX = 0, offsetY = 0;
+
+chatbot.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  offsetX = e.clientX - chatbot.getBoundingClientRect().left;
+  offsetY = e.clientY - chatbot.getBoundingClientRect().top;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+
+  chatbot.style.left = (e.clientX - offsetX) + 'px';
+  chatbot.style.top = (e.clientY - offsetY) + 'px';
+  chatbot.style.bottom = 'auto';
+  chatbot.style.right = 'auto';
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+</script>
+
+  
 </body>
 </html>
+
 
 
