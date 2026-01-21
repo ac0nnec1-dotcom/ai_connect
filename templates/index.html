@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Connect</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
   <style>
     /* ===== PORTAFOLIO ===== */
     .portfolio {
@@ -75,18 +76,6 @@
       max-width: 1100px;
       margin: auto;
     }
-    .beneficios h2 {
-      font-size: 2rem;
-      margin-bottom: 15px;
-      color: #0d47a1;
-      text-transform: capitalize;
-    }
-    .beneficios p.intro {
-      font-size: 1.05rem;
-      max-width: 800px;
-      margin: 0 auto 20px;
-      color: #444;
-    }
     .beneficios-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -100,32 +89,12 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: left;
     }
-    .beneficio-card h3 {
-      color: #1976d2;
-      margin-bottom: 8px;
-      text-transform: capitalize;
-    }
-    .beneficio-card p {
-      color: #555;
-      line-height: 1.4;
-    }
 
     /* ===== MÉTODOS DE PAGO ===== */
     .payment-section {
       text-align: center;
       padding: 40px 20px;
       background: #f5f5f5;
-    }
-    .payment-section h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #0d47a1;
-      text-transform: capitalize;
-    }
-    .payment-section p {
-      font-size: 1.05rem;
-      color: #444;
-      margin-bottom: 20px;
     }
     .payment-methods {
       display: grid;
@@ -140,48 +109,38 @@
       width: 260px;
       text-align: center;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.2s;
-    }
-    .payment-card:hover {
-      transform: translateY(-5px);
-    }
-    .payment-card img {
-      width: 60px;
-      height: auto;
-      margin-bottom: 10px;
-    }
-    .payment-card h3 {
-      color: #1976d2;
-      margin-bottom: 8px;
-      text-transform: capitalize;
-    }
-    .payment-card p {
-      color: #555;
-      font-size: 0.95rem;
-      line-height: 1.4;
     }
 
-    /* ===== CHATBOT FLOTANTE ===== */
-    #chatbot-logo {
+    /* ===== CHATBOT ===== */
+    #chatbot-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
       width: 60px;
       height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
       z-index: 10000;
-      cursor: move;
-      transition: transform 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      overflow: hidden;
     }
-    #chatbot-logo img {
+    #chatbot-button img {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
     }
-    #chatbot-logo:hover {
-      transform: scale(1.2);
+    #chatbox {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 380px;
+      height: 500px;
+      border-radius: 12px;
+      border: none;
+      display: none;
+      z-index: 9999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
 
-    /* Responsive */
     @media(max-width: 768px) {
       .portfolio-item,
       .portfolio-item.reverse {
@@ -190,12 +149,18 @@
       .portfolio-img img {
         height: 180px;
       }
+      .beneficios-grid,
+      .payment-methods {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  {% include 'header.html' %}
+{% include 'header.html' %}
+
 
   <!-- ====== PORTAFOLIO ====== -->
   <section class="portfolio">
@@ -362,24 +327,32 @@
   </section>
 
   <!-- ===== CHATBOT FLOTANTE ===== -->
-  <div id="chatbot-logo">
-    <img src="{{ url_for('static', filename='chatbot_logo.png') }}" alt="Chatbot">
-  </div>
+<div id="chatbot-button">
+  <img src="{{ url_for('static', filename='chatbot_logo.png') }}" alt="Chatbot">
+</div>
 
-  <script>
-    function toggleExtra(id, btn) {
-      const extra = document.getElementById(id);
-      if (extra.style.display === "block") {
-        extra.style.display = "none";
-        btn.textContent = "Ver más";
-      } else {
-        extra.style.display = "block";
-        btn.textContent = "Ver menos";
-      }
-    }
-  </script>
+<iframe id="chatbox" src="/chat"></iframe>
 
+<script>
+function toggleExtra(id, btn) {
+  const extra = document.getElementById(id);
+  if (extra.style.display === "block") {
+    extra.style.display = "none";
+    btn.textContent = "Ver más";
+  } else {
+    extra.style.display = "block";
+    btn.textContent = "Ver menos";
+  }
+}
+
+document.getElementById("chatbot-button").onclick = () => {
+  const chat = document.getElementById("chatbox");
+  chat.style.display = chat.style.display === "block" ? "none" : "block";
+};
+</script>
+  
   {% include 'footer.html' %}
 
 </body>
 </html>
+
